@@ -1,6 +1,9 @@
 const axios = require('axios');
+const bcrypt = require('bcryptjs');
 
 const { authenticate } = require('../auth/authenticate');
+
+const Users = require('./models');
 
 module.exports = server => {
   server.post('/api/register', register);
@@ -8,9 +11,22 @@ module.exports = server => {
   server.get('/api/jokes', authenticate, getJokes);
 };
 
-function register(req, res) {
+async function register(req, res) {
   // implement user registration
+  let user = req.body; 
+  const hash = bcrypt.hashSync(user.password, 10); // 2 ^ n
+  user.password = hash;
+
+  try {
+    const saved = await Users.add(user);
+    res.status(201).json(saved);
+  } catch (error) {
+    console.log(error);
+    res.staus(500).json(error);
+  }
 }
+
+
 
 function login(req, res) {
   // implement user login
