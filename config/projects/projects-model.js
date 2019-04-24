@@ -1,4 +1,5 @@
 const db = require('../../data/dbConfig');
+const {getByProject} = require('../roles/roles-model');
 
 module.exports = {
     get: function() {
@@ -10,7 +11,7 @@ module.exports = {
                 .first()
                 .then(project => {
                     if (project) {
-                        return getProjectActions(id).then(actions => {
+                        return getByProject(id).then(actions => {
                             project.actions = actions;
                             return project;
                         });
