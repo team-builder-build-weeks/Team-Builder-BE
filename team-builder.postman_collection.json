@@ -1,0 +1,121 @@
+{
+	"info": {
+		"_postman_id": "24b243cd-3467-4609-932b-76f2cbdb0883",
+		"name": "team-builder",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "https://team-builders.herokuapp.com/api/login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\": \"hargo\",\n\t\"password\": \"password\"\n}"
+				},
+				"url": {
+					"raw": "https://team-builders.herokuapp.com/api/login",
+					"protocol": "https",
+					"host": [
+						"team-builders",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://team-builders.herokuapp.com/api/register",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\": \"hargo\",\n\t\"password\": \"password\"\n}"
+				},
+				"url": {
+					"raw": "https://team-builders.herokuapp.com/api/register",
+					"protocol": "https",
+					"host": [
+						"team-builders",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LIVE /api/projects",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://team-builders.herokuapp.com/api/projects",
+					"protocol": "https",
+					"host": [
+						"team-builders",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"projects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:5000/api/projects",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:5000/api/projects",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"projects"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
