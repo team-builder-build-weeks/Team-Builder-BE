@@ -1,62 +1,15 @@
-// const axios = require('axios');
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
-
-// const { authenticate } = require('../auth/authenticate');
-const secret = require('./secret')
-
-const Users = require('./models');
+const {register, login} = require('./users/user-routes');
+const {getProj, getProjById, addProj} = require('./projects/projects-routes');
+const {addRole, getRolesByProject} = require('./roles/roles-routes');
 
 module.exports = server => {
-  server.post('/api/register', register);
-  server.post('/api/login', login);
-};
-
-async function register(req, res) {
-  let user = req.body; 
-  const hash = bcrypt.hashSync(user.password, 10); // 2 ^ n
-  user.password = hash;
-
-  try {
-    const saved = await Users.add(user);
-    res.status(201).json(saved);
-  } catch (error) {
-    console.log(error);
-    res.staus(500).json(error);
-  }
-}
-
-
-
-async function login(req, res) {
-  let {username, password} = req.body;
-    const user = await Users.findBy({username});
+    server.post('/api/register', register);
+    server.post('/api/login', login);
     
-    try {
-        if (user && bcrypt.compareSync(password, user.password)) {
-            const token = generateToken(user);
-            res.status(200).json({
-                message: `Welcome ${user.username}?!`,
-                token
-            });
-        } else {
-            res.status(401).json({ message: 'Invalid Credentials' });
-        }
-    } catch (error) {
-        console.log(error)
-        res.status(500).json(error)
-    }
-}
-
-function generateToken(user) {
-  const payload = {
-      subject: user.id, // subject in payload is what the token is about
-      username: user.username,
-      // ...otherData
-  };
-
-  const options = {
-      expiresIn: '1d'
-  };
-  return jwt.sign(payload, secret.jwtSecret, options)
-}
+    server.get('/api/projects', getProj);
+    server.get('/api/projects/:id', getProjById);
+    server.post('/api/projects', addProj);
+    
+    server.post('/api/roles', addRole);
+    server.get('/api/roles/:id', getRolesByProject)
+};
