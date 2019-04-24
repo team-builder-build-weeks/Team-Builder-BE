@@ -9,6 +9,9 @@ exports.up = function(knex, Promise) {
             .notNullable();
 
             tbl
+            .text('description');
+
+            tbl
             .integer('project_id')
             .unsigned()
             .notNullable()
@@ -16,7 +19,6 @@ exports.up = function(knex, Promise) {
             .inTable('projects')
             .onDelete('CASCADE')
             .onUpdate('CASCADE');
-
 
         })
 };
