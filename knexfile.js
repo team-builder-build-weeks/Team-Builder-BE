@@ -3,7 +3,7 @@ require('dotenv').config()
 module.exports = {
   development: {
     client: 'sqlite3',
-    connection: { filename: './data/auth.db3' }, // change this if you want a different name for the data
+    connection: { filename: './data/Projects.db3' }, // change this if you want a different name for the data
     useNullAsDefault: true, // used to avoid warning on console
     migrations: {
       directory: './data/migrations',

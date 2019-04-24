@@ -1,10 +1,15 @@
 const {register, login} = require('./users/user-routes');
 const {getProj, getProjById, addProj} = require('./projects/projects-routes');
+const {addRole, getRolesByProject} = require('./roles/roles-routes');
 
 module.exports = server => {
     server.post('/api/register', register);
     server.post('/api/login', login);
+    
     server.get('/api/projects', getProj);
     server.get('/api/projects/:id', getProjById);
     server.post('/api/projects', addProj);
+    
+    server.post('/api/roles', addRole);
+    server.get('/api/roles/:id', getRolesByProject)
 };
