@@ -4,7 +4,7 @@ module.exports ={
     getProj: async (req, res) => {
         try {
             const id =  await req.params.id;
-            const resourceArr = await Projects.get(id);
+            const resourceArr = await Projects.get();
             console.log(" resource Array :" , resourceArr);
             res.status(200).json(resourceArr);
         } catch (error) {
