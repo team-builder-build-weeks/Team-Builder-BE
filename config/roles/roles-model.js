@@ -13,6 +13,7 @@ module.exports = {
         return db('roles')
         .where('project_id', projectId)
         .then(roles => roles.map(role => {
+            console.log('getRoleByProject', role)
             return {
                 ...role
             };

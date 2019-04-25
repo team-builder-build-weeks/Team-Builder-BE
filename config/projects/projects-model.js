@@ -10,6 +10,7 @@ module.exports = {
                 .where({ id })
                 .first()
                 .then(project => {
+                    console.log('getById', projects)
                     if (project) {
                         return getByProject(id).then(actions => {
                             project.actions = actions;
@@ -23,11 +24,7 @@ module.exports = {
     insert: function(project) {
         return db('projects')
         .insert(project)
-        .then(([id]) => this.get(id));
+        // .then(res => res);
+        // .then(([id]) => this.getById(id));
     },
-    
 }
-
-
-
-
