@@ -10,7 +10,7 @@ module.exports = {
                 .where({ id })
                 .first()
                 .then(project => {
-                    console.log('getById', projects)
+                    console.log('getById', project)
                     if (project) {
                         return getByProject(id).then(roles => {
                             project.roles = roles;
