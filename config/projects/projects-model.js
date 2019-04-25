@@ -23,7 +23,7 @@ module.exports = {
     insert: function(project) {
         return db('projects')
         .insert(project)
-        .then(([id]) => this.get(id));
+        // .then(([id]) => this.get(id));
     },
     updateProject: function(id, body){
         return db('projects')
