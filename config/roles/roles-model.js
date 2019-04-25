@@ -17,6 +17,21 @@ module.exports = {
                 ...role
             };
         }));
+    },
+    updateRole: function(id, body){
+        return db('roles')
+            .where({id})
+            .first()
+            .update(body)
+            .then(count => {
+                if(count > 0){
+                    return db('roles')
+                    .where({id})
+                    .first()
+                } else {
+                    return null
+                }
+            })
     }
     
 }

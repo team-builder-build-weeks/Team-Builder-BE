@@ -11,8 +11,8 @@ module.exports = {
                 .first()
                 .then(project => {
                     if (project) {
-                        return getByProject(id).then(actions => {
-                            project.actions = actions;
+                        return getByProject(id).then(roles => {
+                            project.roles = roles;
                             return project;
                         });
                     } else {
@@ -25,7 +25,21 @@ module.exports = {
         .insert(project)
         .then(([id]) => this.get(id));
     },
-    
+    updateProject: function(id, body){
+        return db('projects')
+            .where({id})
+            .first()
+            .update(body)
+            .then(count => {
+                if(count > 0){
+                    return db('projects')
+                    .where({id})
+                    .first()
+                } else {
+                    return null
+                }
+            })
+    }
 }
 
 
