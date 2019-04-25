@@ -3,7 +3,7 @@ const db = require('../../data/dbConfig')
 module.exports = {
     addRole: function(role) {
         return db('roles')
-            .insert(role)
+            .insert(role, 'id')
             .then(([id]) => this.getAll(id));
     },
     getAll: function(){
