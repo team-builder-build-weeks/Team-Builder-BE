@@ -10,6 +10,15 @@ module.exports = {
             res.status(500).json(`error creating role ${error}`)
         }
     },
+    getRoles: async (req, res) =>{
+        try {
+            const rolesArr = await Roles.getAll()
+            res.status(200).json(rolesArr)        
+        } catch (error) {
+            console.log(error)
+            res.status(500).json({message: `error getting roles ${error}`})
+        }
+    },
     getRolesByProject: async (req, res) => {
         try {
             // const {id} =  await req.params.id;
