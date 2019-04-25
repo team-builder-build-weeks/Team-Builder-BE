@@ -44,5 +44,18 @@ module.exports ={
             console.log(error);
             res.status(500).json(error)
         }
+    },
+    delProj: async (req, res) => {
+        try {
+            const count = await Projects.deleteProj(req.params.id);
+            if (count > 0) {
+                res.status(204).end()
+            } else {
+                res.status(404).json({error: `Couldn't delete project, please check id`})
+            }
+        } catch (error) {
+            console.log(error);
+            res.status(500).json(error)
+        }
     }
 }

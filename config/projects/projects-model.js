@@ -39,6 +39,11 @@ module.exports = {
                     return null
                 }
             })
+    },
+    deleteProj: function(id){
+        return db('projects')
+            .where({id})
+            .del()
     }
 }
 

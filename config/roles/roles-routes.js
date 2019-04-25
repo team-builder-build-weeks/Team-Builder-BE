@@ -6,6 +6,7 @@ module.exports = {
             const newRole = await Roles.addRole(req.body)
             res.status(200).json(newRole);
         } catch (error) {
+            console.log(error);
             res.status(500).json(`error creating role ${error}`)
         }
     },
@@ -31,6 +32,18 @@ module.exports = {
             }
         } catch (error) {
             console.log(error);
+            res.status(500).json(error)
+        }
+    },
+    delRole: async (req, res) => {
+        try {
+            const count = await Roles.deleteRole(req.params.id);
+            if (count > 0) {
+                res.status(204).end()
+            } else {
+                res.status(404).json({error: `Couldn't delete role, please check id`})
+            }
+        } catch (error) {
             res.status(500).json(error)
         }
     }

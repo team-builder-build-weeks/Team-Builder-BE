@@ -4,7 +4,7 @@ module.exports = {
     addRole: function(role) {
         return db('roles')
             .insert(role)
-            .then(([id]) => this.get(id));
+            .then(([id]) => this.getAll(id));
     },
     getAll: function(){
         return db('roles');
@@ -32,8 +32,12 @@ module.exports = {
                     return null
                 }
             })
+    },
+    deleteRole: function(id) {
+        return db('roles')
+        .where({id})
+        .del()
     }
-    
 }
 
 
