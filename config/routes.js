@@ -1,6 +1,6 @@
 const {register, login} = require('./users/user-routes');
 const {getProj, getProjById, addProj, updateProj, delProj} = require('./projects/projects-routes');
-const {addRole, getRolesByProject, updateRole, delRole} = require('./roles/roles-routes');
+const {addRole, getRolesByProject, updateRole, delRole, getRoles} = require('./roles/roles-routes');
 
 module.exports = server => {
     server.post('/api/register', register);
@@ -12,6 +12,7 @@ module.exports = server => {
     server.put('/api/projects/:id', updateProj);
     server.delete('/api/projects/:id',delProj)
     
+    server.get('/api/roles', getRoles)
     server.post('/api/roles', addRole);
     server.get('/api/roles/:id', getRolesByProject);
     server.put('/api/roles/:id', updateRole);
