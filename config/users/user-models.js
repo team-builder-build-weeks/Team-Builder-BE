@@ -3,8 +3,8 @@ const db = require('../../data/dbConfig');
 module.exports = {
 
     add: async function(user) {
-        const [id] = await db('users').insert(user);
-        return this.findById(id);
+        const id = await db('users').insert(user);
+        return  id //this.findById(id);
     },
     find: function() {
         return db('users').select('id', 'username', 'password');
