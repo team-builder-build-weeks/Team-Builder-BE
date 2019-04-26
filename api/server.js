@@ -30,9 +30,15 @@ server.get('/', (req, res) => {
     <p>POST {name: ' ', description: ' '} to /api/projects to create project</p>
     <p>GET  to /api/projects returns all Projects</p>
     <p>GET to /api/projects/:id returns Projects by ID</p>
-    
-    <strong>Role Methods</strong>
+    <p>PUT to /api/projects/:id updates Projects by ID</p>
+    <p>DELETE to '/api/projects/:id' for deleting projects</p>
 
+    <strong>Role Methods</strong>
+    <p>POST {name: ' ', description: ' ', project_id: 0} to /api/roles to create role</p>
+    <p>GET  to /api/roles returns all Roles</p>
+    <p>GET to /api/roles/:id returns Roles by ID</p>
+    <p>PUT to /api/roles/:id updates Roles by ID</p>
+    <p>DELETE to '/api/roles/:id' for deleting roles</p>
 
     `)
 })
